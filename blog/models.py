@@ -31,6 +31,7 @@ class Post(models.Model):
 class Subscription(models.Model):
     subscriber = models.ForeignKey(User, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.subscriber}'
+        return f'{self.subscriber} подписался на {self.blog.user}'
